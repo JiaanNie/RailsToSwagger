@@ -1,0 +1,242 @@
+---- >>> Entering Hippo (API proxy) in [development] mode ... 
+        GET  |  /content/program_groups/:group_id/programs(.:format)                                                   |    |  List Programs.                                                        
+       POST  |  /content/program_groups/:group_id/programs(.:format)                                                   |    |  Create a new Program.                                                 
+        GET  |  /content/programs/:id(.:format)                                                                        |    |  Return a particular Program.                                          
+        PUT  |  /content/programs/:id(.:format)                                                                        |    |  Update an existing Program.                                           
+     DELETE  |  /content/programs/:id(.:format)                                                                        |    |  Delete a Program.                                                     
+        PUT  |  /content/programs/:id/unpublish(.:format)                                                              |    |  Unpublish Program                                                     
+        PUT  |  /content/programs/:id/publish(.:format)                                                                |    |  Publish Program                                                       
+        PUT  |  /content/programs/:id/sunset(.:format)                                                                 |    |  Sunset Program                                                        
+        PUT  |  /content/programs/:id/archive(.:format)                                                                |    |  Archive Program                                                       
+        PUT  |  /content/programs/:id/clone(.:format)                                                                  |    |  Clone Program                                                         
+        GET  |  /client/enrollments/:enrollment_id/package(.:format)                                                   |    |  Get particular enrollment info for client                             
+        GET  |  /content/program_groups(.:format)                                                                      |    |  List ProgramGroups.                                                   
+       POST  |  /content/program_groups(.:format)                                                                      |    |  Create a new ProgramGroup.                                            
+        GET  |  /content/program_groups/:id(.:format)                                                                  |    |  Return a particular ProgramGroup.                                     
+        PUT  |  /content/program_groups/:id(.:format)                                                                  |    |  Update an existing ProgramGroup.                                      
+     DELETE  |  /content/program_groups/:id(.:format)                                                                  |    |  Delete a ProgramGroup.                                                
+        GET  |  /client/enrollments/:enrollment_id/graphs(.:format)                                                    |    |  Get data for plotting client-viewable graphs                          
+        GET  |  /client/enrollments/:enrollment_id/surveys(.:format)                                                   |    |  Get surveys due for a particular enrolment info for client            
+        GET  |  /client/enrollments/:enrollment_id/surveys/:id(.:format)                                               |    |  Get specific survey link result for client                            
+       POST  |  /client/enrollments/:enrollment_id/surveys/:survey_id/results/:result_id/complete(.:format)            |    |  mark result as complete                                               
+       POST  |  /client/enrollments/:enrollment_id/surveys/:survey_id/results/:result_id/result_entries(.:format)      |    |  create new result entry                                               
+        PUT  |  /client/enrollments/:enrollment_id/surveys/:survey_id/results/:result_id/result_entries/:id(.:format)  |    |  update a result entry                                                 
+        GET  |  /client/enrollments/:enrollment_id/stages(.:format)                                                    |    |  Get particular enrolment info for client                              
+        GET  |  /client/enrollments/:enrollment_id/stages/:id(.:format)                                                |    |  Get specific stage and completion info in an enrollment for client    
+        GET  |  /client/enrollments/:enrollment_id/stages/:stage_id/tasks/:task_id/pages/*id(.:format)                 |    |  Get page                                                              
+        PUT  |  /client/enrollments/:enrollment_id/stages/:stage_id/tasks/:task_id/pages/viewed/*id(.:format)          |    |  Mark page as Viewed                                                   
+        GET  |  /client/enrollments(.:format)                                                                          |    |  Get enrollments for a client.                                         
+        GET  |  /client/enrollments/:id(.:format)                                                                      |    |  Get particular enrollment info for client                             
+       POST  |  /client/enrollments(.:format)                                                                          |    |  Client self-enrollment into eligibile program                         
+       POST  |  /client/enrollments/:id/withdraw(.:format)                                                             |    |  Client wishes to withdraw (cancel the enrollent).                     
+        GET  |  /common/avatar(.:format)                                                                               |    |  Get Current Users Avatar                                              
+       POST  |  /common/avatar(.:format)                                                                               |    |  Update/Create Current Users Avatar                                    
+        PUT  |  /common/avatar(.:format)                                                                               |    |  Update/Create Current Users Avatar                                    
+     DELETE  |  /common/avatar(.:format)                                                                               |    |  Remove Current Users Avatar                                           
+        GET  |  /common/avatar/:id(.:format)                                                                           |    |  Get specific users avatar                                             
+        GET  |  /staff/dashboard(.:format)                                                                             |    |  Staff dashboard                                                       
+        GET  |  /common/matchings(.:format)                                                                            |    |  List matchings                                                        
+        GET  |  /content/programs/:program_id/additional_resources(.:format)                                           |    |  List Additional Resources for Program                                 
+       POST  |  /content/programs/:program_id/additional_resources(.:format)                                           |    |  Create a new Additional Resource.                                     
+     DELETE  |  /content/additional_resources/:id(.:format)                                                            |    |  Delete an Additional Resource.                                        
+       POST  |  /common/draft(.:format)                                                                                |    |  Create draft message                                                  
+        GET  |  /staff/broadcasts(.:format)                                                                            |    |  List broadcasts.                                                      
+       POST  |  /staff/broadcasts(.:format)                                                                            |    |  Create a new broadcasts.                                              
+        GET  |  /staff/broadcasts/:id(.:format)                                                                        |    |  Return a particular broadcast.                                        
+        PUT  |  /staff/broadcasts/:id(.:format)                                                                        |    |  Update an existing broadcast.                                         
+     DELETE  |  /staff/broadcasts/:id(.:format)                                                                        |    |  Expire/delete a broadcast.                                            
+       POST  |  /common/message(.:format)                                                                              |    |  Send message                                                          
+        GET  |  /common/folders/:folder_id/messages(.:format)                                                          |    |  List all messages in a folder.                                        
+        GET  |  /common/folders/:folder_id/messages/:id(.:format)                                                      |    |  Return particular message for client                                  
+        PUT  |  /common/folders/:folder_id/messages/:id(.:format)                                                      |    |  Update (drafts only) message                                          
+        PUT  |  /common/folders/:folder_id/messages/move_to/:target_id(.:format)                                       |    |  Move multiple messages                                                
+     DELETE  |  /common/folders/:folder_id/messages/:id(.:format)                                                      |    |  Delete a message                                                      
+        PUT  |  /common/folders/:folder_id/messages/:id/restore(.:format)                                              |    |  Restore a deleted message                                             
+        GET  |  /content/media/:item_type/:item_id/images(.:format)                                                    |    |  List images on a page                                                 
+       POST  |  /content/media/:item_type/:item_id/images(.:format)                                                    |    |  Upload an image to a page.                                            
+        GET  |  /content/media/:item_type/:item_id/images/:id(.:format)                                                |    |  Get image info on a page.                                             
+        PUT  |  /content/media/:item_type/:item_id/images/:id(.:format)                                                |    |  Update an image on a page.                                            
+     DELETE  |  /content/media/:item_type/:item_id/images/:id(.:format)                                                |    |  Delete an image on a page.                                            
+        GET  |  /content/media/:item_type/:item_id/resources(.:format)                                                 |    |  List resources on a page.                                             
+       POST  |  /content/media/:item_type/:item_id/resources(.:format)                                                 |    |  Upload a resource to a page.                                          
+     DELETE  |  /content/media/:item_type/:item_id/resources/:id(.:format)                                             |    |  Delete a resource on a page.                                          
+        GET  |  /client/prescreen(.:format)                                                                            |    |  Get all available (published) programs eligible for self-registration.
+        GET  |  /staff/members/:staff_id/comment(.:format)                                                             |    |  Return staff account comment                                          
+        PUT  |  /staff/members/:staff_id/comment(.:format)                                                             |    |  Update an staff account comment.                                      
+        GET  |  /common/folders(.:format)                                                                              |    |  List folders.                                                         
+       POST  |  /common/folders(.:format)                                                                              |    |  Create a new folder.                                                  
+        GET  |  /common/folders/:id(.:format)                                                                          |    |  Return a particular folder.                                           
+        PUT  |  /common/folders/:id(.:format)                                                                          |    |  Update an existing folder.                                            
+     DELETE  |  /common/folders/:id(.:format)                                                                          |    |  Delete a folder.                                                      
+        GET  |  /content/questions/:id(.:format)                                                                       |    |  Return a particular question.                                         
+        GET  |  /common/settings(.:format)                                                                             |    |  Get profile settings                                                  
+        PUT  |  /common/settings/:var(.:format)                                                                        |    |  Saves a particular setting for logged-in user                         
+        GET  |  /client/matchings(.:format)                                                                            |    |  Return all visible and active matching records.                       
+        GET  |  /common/profile(.:format)                                                                              |    |  Profile info                                                          
+        GET  |  /common/profile/:id(.:format)                                                                          |    |  Return a particular user's info                                       
+        PUT  |  /common/profile/:id(.:format)                                                                          |    |  Saves a particular user's info                                        
+        PUT  |  /common/profile(.:format)                                                                              |    |  Update own profile info                                               
+        PUT  |  /common/profile/email(.:format)                                                                        |    |  Update own email address (triggers email change confirmation)         
+        GET  |  /content/scoring_domains/:scoring_domain_id/domain_question_links(.:format)                            |    |  Return list of all domain question links                              
+       POST  |  /content/scoring_domains/:scoring_domain_id/domain_question_links(.:format)                            |    |  Create a domain question links                                        
+        GET  |  /content/domain_question_links/:id(.:format)                                                           |    |  Return a particular domain question link.                             
+        PUT  |  /content/domain_question_links/:id(.:format)                                                           |    |  Update a particular domain question link.                             
+     DELETE  |  /content/domain_question_links/:id(.:format)                                                           |    |  Update a particular domain question link.                             
+        GET  |  /staff/members/:staff_id/matchings(.:format)                                                           |    |  Return all supervisory matchings records for therapist.               
+       POST  |  /staff/members/:staff_id/matchings(.:format)                                                           |    |  Create a new staff-staff matching for therapist.                      
+        GET  |  /staff/members/:staff_id/matchings/:id(.:format)                                                       |    |  View a particular staff-staff matching for staff                      
+        PUT  |  /staff/members/:staff_id/matchings/:id(.:format)                                                       |    |  Update an existing staff-staff matching for staff.                    
+     DELETE  |  /staff/members/:staff_id/matchings/:id(.:format)                                                       |    |  Expire an existing staff-staff matching for staff.                    
+        GET  |  /common/broadcasts(.:format)                                                                           |    |  Retrieve all applicable broadcasts for logged-in user                 
+        PUT  |  /common/broadcasts/:id(.:format)                                                                       |    |  Mark targeted broadcast as viewed                                     
+     DELETE  |  /common/broadcasts/:id(.:format)                                                                       |    |  Mark targeted broadcast as dismissed                                  
+        GET  |  /content/surveys(.:format)                                                                             |    |  Return list of all surveys                                            
+       POST  |  /content/surveys(.:format)                                                                             |    |  Create a survey                                                       
+        GET  |  /content/surveys/:survey_id/questions(.:format)                                                        |    |  List Questions for Survey                                             
+        GET  |  /content/surveys/:id(.:format)                                                                         |    |  Return a particular survey.                                           
+        PUT  |  /content/surveys/:id(.:format)                                                                         |    |  Update a particular survey.                                           
+     DELETE  |  /content/surveys/:id(.:format)                                                                         |    |  Delete a particular survey.                                           
+        PUT  |  /content/surveys/:id/publish(.:format)                                                                 |    |  Publish Survey                                                        
+        PUT  |  /content/surveys/:id/sunset(.:format)                                                                  |    |  Sunset Survey                                                         
+        PUT  |  /content/surveys/:id/archive(.:format)                                                                 |    |  Archive Survey                                                        
+        PUT  |  /content/surveys/:id/attachPage(.:format)                                                              |    |  Attach Page to Survey                                                 
+          *  |  /?*path(.:format)                                                                                      |    |                                                                        
+        GET  |  /refresh(.:format)                                                                                     |    |  blah                                                                  
+        GET  |  /common/recipients(.:format)                                                                           |    |  List elegibile recipients for messages, broadcasts for logged-in user.
+        GET  |  /content/programs/:program_id/stages(.:format)                                                         |    |  List Stages for Program                                               
+       POST  |  /content/programs/:program_id/stages(.:format)                                                         |    |  Create a new Stage.                                                   
+        GET  |  /content/stages/:id(.:format)                                                                          |    |  Return a particular Stage.                                            
+        PUT  |  /content/stages/:id(.:format)                                                                          |    |  Update an existing Stage.                                             
+     DELETE  |  /content/stages/:id(.:format)                                                                          |    |  Delete a Stage.                                                       
+        GET  |  /content/programs/:program_id/graphs(.:format)                                                         |    |  List Graphs for Program                                               
+       POST  |  /content/programs/:program_id/graphs(.:format)                                                         |    |  Create a new Graph.                                                   
+        GET  |  /content/graphs/:id(.:format)                                                                          |    |  Return a particular Graph.                                            
+        PUT  |  /content/graphs/:id(.:format)                                                                          |    |  Update an existing Graph.                                             
+     DELETE  |  /content/graphs/:id(.:format)                                                                          |    |  Delete a graph.                                                       
+        GET  |  /content/graphs/:graph_id/data_points(.:format)                                                        |    |  List data-points for a Graph                                          
+       POST  |  /content/graphs/:graph_id/data_points(.:format)                                                        |    |  Create a new datapoint (link b/w scoring domain and graph).           
+        GET  |  /content/data_points/:id(.:format)                                                                     |    |  Return a particular data-point.                                       
+        PUT  |  /content/data_points/:id(.:format)                                                                     |    |  Update an existing data-point.                                        
+     DELETE  |  /content/data_points/:id(.:format)                                                                     |    |  Delete a data-spoint.                                                 
+        GET  |  /content/stages/:stage_id/tasks(.:format)                                                              |    |  List Tasks.                                                           
+       POST  |  /content/stages/:stage_id/tasks(.:format)                                                              |    |  Create a new Task.                                                    
+        GET  |  /content/tasks/:id(.:format)                                                                           |    |  Return a particular Task.                                             
+        PUT  |  /content/tasks/:id(.:format)                                                                           |    |  Update an existing Task.                                              
+     DELETE  |  /content/tasks/:id(.:format)                                                                           |    |  Delete a Task.                                                        
+        GET  |  /content/stages/:stage_id/scoring_domains(.:format)                                                    |    |  Return list of all scoring domains                                    
+       POST  |  /content/stages/:stage_id/scoring_domains(.:format)                                                    |    |  Create a scoring domain                                               
+        GET  |  /content/programs/:program_id/scoring_domains(.:format)                                                |    |  Return list of all scoring domains for a particular program           
+        GET  |  /content/scoring_domains/:id(.:format)                                                                 |    |  Return a particular scoring domain.                                   
+        PUT  |  /content/scoring_domains/:id(.:format)                                                                 |    |  Update a particular scoring domain.                                   
+     DELETE  |  /content/scoring_domains/:id(.:format)                                                                 |    |  Update a particular scoring domain.                                   
+        GET  |  /content/programs/:program_id/survey_links(.:format)                                                   |    |  List Survey Link.                                                     
+        GET  |  /content/stages/:stage_id/survey_links(.:format)                                                       |    |  List Survey Link.                                                     
+       POST  |  /content/stages/:stage_id/survey_links(.:format)                                                       |    |  Create a new Survey Link.                                             
+        GET  |  /content/survey_links/:id(.:format)                                                                    |    |  Return a particular Survey Link.                                      
+        PUT  |  /content/survey_links/:id(.:format)                                                                    |    |  Update an existing Survey Link.                                       
+     DELETE  |  /content/survey_links/:id(.:format)                                                                    |    |  Delete a Survey Link.                                                 
+        GET  |  /content/stages/:stage_id/notifications(.:format)                                                      |    |  Return list of all notifications                                      
+       POST  |  /content/stages/:stage_id/notifications(.:format)                                                      |    |  Create a notification                                                 
+        GET  |  /content/notifications/:id(.:format)                                                                   |    |  Return a particular Notification.                                     
+        PUT  |  /content/notifications/:id(.:format)                                                                   |    |  Update a particular Notification.                                     
+     DELETE  |  /content/notifications/:id(.:format)                                                                   |    |  Update a particular Notification.                                     
+        GET  |  /content/pages(.:format)                                                                               |    |  Return list of all base pages                                         
+       POST  |  /content/pages(.:format)                                                                               |    |  Create a page                                                         
+        GET  |  /content/pages/*page_id(.:format)                                                                      |    |  Return a particular Page.                                             
+        PUT  |  /content/pages/*page_id(.:format)                                                                      |    |  Update an existing Page.                                              
+     DELETE  |  /content/pages/*page_id(.:format)                                                                      |    |  Delete a Page.                                                        
+        PUT  |  /content/pages/:id/unpublish(.:format)                                                                 |    |  Unpublish Page                                                        
+        PUT  |  /content/pages/:id/publish(.:format)                                                                   |    |  Publish Page                                                          
+        PUT  |  /content/pages/:id/sunset(.:format)                                                                    |    |  Sunset Page                                                           
+        PUT  |  /content/pages/:id/archive(.:format)                                                                   |    |  Archive Page                                                          
+        GET  |  /staff/members/:staff_id/client_matchings(.:format)                                                    |    |  Return all client matchings records for therapist.                    
+        GET  |  /staff/members/:staff_id/staff_matchings(.:format)                                                     |    |  Return all staff matchings records overseen by this staff member.     
+        GET  |  /staff/members/:staff_id/settings(.:format)                                                            |    |  Get a staff member's settings                                         
+        GET  |  /staff/members/:staff_id/messaging_statistics(.:format)                                                |    |  List staff stats.                                                     
+        GET  |  /staff/members/:staff_id/caseload(.:format)                                                            |    |  Show staff member's caseload                                          
+        GET  |  /staff/members(.:format)                                                                               |    |  List staff accounts.                                                  
+       POST  |  /staff/members(.:format)                                                                               |    |  Create a new staff account.                                           
+        GET  |  /staff/members/:id(.:format)                                                                           |    |  Return a particular staff account.                                    
+        PUT  |  /staff/members/:id(.:format)                                                                           |    |  Update an existing staff account.                                     
+     DELETE  |  /staff/members/:id(.:format)                                                                           |    |  Terminate staff account.                                              
+        GET  |  /staff/roles(.:format)                                                                                 |    |  List roles.                                                           
+       POST  |  /staff/roles(.:format)                                                                                 |    |  Create a new role.                                                    
+        GET  |  /staff/roles/:id(.:format)                                                                             |    |  Return a particular role info.                                        
+        PUT  |  /staff/roles/:id(.:format)                                                                             |    |  Update an existing role record.                                       
+     DELETE  |  /staff/roles/:id(.:format)                                                                             |    |  Delete a role record.                                                 
+        GET  |  /staff/abilities(.:format)                                                                             |    |  List abilities.                                                       
+       POST  |  /staff/abilities(.:format)                                                                             |    |  Create a new ability.                                                 
+        GET  |  /staff/abilities/:id(.:format)                                                                         |    |  Return a particular ability info.                                     
+        PUT  |  /staff/abilities/:id(.:format)                                                                         |    |  Update an existing ability record.                                    
+     DELETE  |  /staff/abilities/:id(.:format)                                                                         |    |  Delete an ability record.                                             
+        GET  |  /staff/endpoints(.:format)                                                                             |    |  List endpoints.                                                       
+       POST  |  /staff/endpoints(.:format)                                                                             |    |  Create a new endpoint entry.                                          
+        GET  |  /staff/endpoints/:id(.:format)                                                                         |    |  Return a particular endpoint.                                         
+        PUT  |  /staff/endpoints/:id(.:format)                                                                         |    |  Update an existing endpoint record.                                   
+     DELETE  |  /staff/endpoints/:id(.:format)                                                                         |    |  Delete an endpoint record.                                            
+        GET  |  /staff/my_therapists(.:format)                                                                         |    |  List therapists under my supervision                                  
+       POST  |  /staff/my_therapists(.:format)                                                                         |    |  Create therapist account                                              
+        GET  |  /staff/matchable/therapists(.:format)                                                                  |    |  List of therapists that can be assigned to clients.                   
+        GET  |  /staff/matchable/supervisors(.:format)                                                                 |    |  List of supervisors that can be assigned to therapists.               
+        GET  |  /staff/my_clients(.:format)                                                                            |    |  List directly assigned (my) clients.                                  
+        GET  |  /staff/clients/:client_id/activities(.:format)                                                         |    |  Get all activities for a client.                                      
+        GET  |  /staff/clients/:client_id/activities/:id(.:format)                                                     |    |  Get particular activity entry for client                              
+       POST  |  /staff/clients/:client_id/clusters(.:format)                                                           |    |  Assign client to multiple client-clusters                             
+        GET  |  /staff/clients/:client_id/comment(.:format)                                                            |    |  Return client account comment                                         
+        PUT  |  /staff/clients/:client_id/comment(.:format)                                                            |    |  Update an account comment for client.                                 
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/graphs(.:format)                                  |    |  Get data for plotting graphs                                          
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/page_views(.:format)                              |    |  Get all pages viewed for particular client enrollment.                
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/page_views/:id(.:format)                          |    |  Get views for page in context of client enrollment                    
+        PUT  |  /staff/clients/:client_id/enrollments/:enrollment_id/page_views/:id(.:format)                          |    |  Update page-view count (for particular client enrollment)             
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/survey_results/:survey_link_id(.:format)          |    |  Get survey results                                                    
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/surveys(.:format)                                 |    |                                                                        
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/scores(.:format)                                  |    |  List psychometric scores for client.                                  
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/scores/:scoring_domain_id(.:format)               |    |  Return a psychometric score for a given scoring domain for a client   
+        GET  |  /staff/clients/:client_id/enrollments/:enrollment_id/stages(.:format)                                  |    |  Get particular enrolment info for client                              
+       POST  |  /staff/clients/:client_id/enrollments/:enrollment_id/unlock_lock/:id(.:format)                         |    |  Create Completion Record for Lock                                     
+        GET  |  /staff/clients/:client_id/enrollments(.:format)                                                        |    |  Get all enrollments for a client.                                     
+        GET  |  /staff/clients/:client_id/enrollments/:id(.:format)                                                    |    |  Get particular enrollment for client                                  
+       POST  |  /staff/clients/:client_id/enrollments(.:format)                                                        |    |  Create enrollment for client                                          
+        PUT  |  /staff/clients/:client_id/enrollments/:id(.:format)                                                    |    |  Create enrollment for client                                          
+       POST  |  /staff/clients/:client_id/enrollments/:id/followup(.:format)                                           |    |  Transition enrollment to FOLLOWUP phase.                              
+       POST  |  /staff/clients/:client_id/enrollments/:id/complete(.:format)                                           |    |  Transition enrollment to COMPLETED phase.                             
+       POST  |  /staff/clients/:client_id/enrollments/:id/withdraw(.:format)                                           |    |  Transition enrollment to WITHDREW phase.                              
+       POST  |  /staff/clients/:client_id/enrollments/:id/disqualify(.:format)                                         |    |  Transition enrollment to DISQUALIFIED phase.                          
+        GET  |  /staff/clients/:client_id/matchings(.:format)                                                          |    |  Return all matching records for client.                               
+       POST  |  /staff/clients/:client_id/matchings(.:format)                                                          |    |  Create a new staff-client matching for client.                        
+        GET  |  /staff/clients/:client_id/matchings/:id(.:format)                                                      |    |  View a particular staff-client matching for client                    
+        PUT  |  /staff/clients/:client_id/matchings/:id(.:format)                                                      |    |  Update an existing staff-client matching for client.                  
+     DELETE  |  /staff/clients/:client_id/matchings/:id(.:format)                                                      |    |  Expire an existing staff-client matching for client.                  
+        GET  |  /staff/clients/:client_id/messages(.:format)                                                           |    |  Get all messages for client.                                          
+     DELETE  |  /staff/clients/:client_id/messages/id(.:format)                                                        |    |  Wipe a client's message                                               
+        GET  |  /staff/clients/:client_id/notes(.:format)                                                              |    |  Return all notes for a client.                                        
+       POST  |  /staff/clients/:client_id/notes(.:format)                                                              |    |  Create a new note for a client.                                       
+        GET  |  /staff/clients/:client_id/notes/:id(.:format)                                                          |    |  Return particular note for client                                     
+        PUT  |  /staff/clients/:client_id/notes/:id(.:format)                                                          |    |  Update an existing note for client.                                   
+        GET  |  /staff/clients/:client_id/settings(.:format)                                                           |    |  Get a client's settings                                               
+        GET  |  /staff/clients/:client_id/messaging_statistics(.:format)                                               |    |  List clients.                                                         
+        GET  |  /staff/clients(.:format)                                                                               |    |  List clients.                                                         
+       POST  |  /staff/clients(.:format)                                                                               |    |  Create a client account.                                              
+        GET  |  /staff/clients/:client_id(.:format)                                                                    |    |  Return a particular client.                                           
+        PUT  |  /staff/clients/:client_id(.:format)                                                                    |    |  Update an existing client record.                                     
+     DELETE  |  /staff/clients/:client_id(.:format)                                                                    |    |  Terminate client account.                                             
+        GET  |  /staff/client_clusters(.:format)                                                                       |    |  List client clusters.                                                 
+       POST  |  /staff/client_clusters(.:format)                                                                       |    |  Create a new client-cluster.                                          
+        GET  |  /staff/client_clusters/:id(.:format)                                                                   |    |  Return a particular client-cluster.                                   
+        PUT  |  /staff/client_clusters/:id(.:format)                                                                   |    |  Update an existing client-cluster.                                    
+     DELETE  |  /staff/client_clusters/:id(.:format)                                                                   |    |  Delete a client-cluster.                                              
+        PUT  |  /staff/client_clusters/:cluster_id/clients/:client_id(.:format)                                        |    |  Add client to client-cluster.                                         
+     DELETE  |  /staff/client_clusters/:cluster_id/clients/:client_id(.:format)                                        |    |  Remove client from client-cluster.                                    
+        GET  |  /staff/note_types(.:format)                                                                            |    |  List note types.                                                      
+       POST  |  /staff/note_types(.:format)                                                                            |    |  Create a new note type.                                               
+        GET  |  /staff/note_types/:id(.:format)                                                                        |    |  Return a particular note type.                                        
+        PUT  |  /staff/note_types/:id(.:format)                                                                        |    |  Update an existing note type.                                         
+     DELETE  |  /staff/note_types/:id(.:format)                                                                        |    |  Delete a status.                                                      
+        GET  |  /staff/library(.:format)                                                                               |    |  List Libraries.                                                       
+       POST  |  /staff/library(.:format)                                                                               |    |  Create a new Library.                                                 
+        GET  |  /staff/library/:id(.:format)                                                                           |    |  Return a particular Library info.                                     
+        PUT  |  /staff/library/:id(.:format)                                                                           |    |  Update an existing library record.                                    
+     DELETE  |  /staff/library/:id(.:format)                                                                           |    |  Delete a library record.                                              
+        GET  |  /staff/library/:library_id/files(.:format)                                                             |    |  List library files.                                                   
+       POST  |  /staff/library/:library_id/files(.:format)                                                             |    |  Create a library file.                                                
+     DELETE  |  /staff/library/:library_id/files/:id(.:format)                                                         |    |  Deletes a library file.                                               

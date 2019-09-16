@@ -1,0 +1,5566 @@
+openapi: 3.0.0
+info:
+  title: Message API
+  description:  API for Messaging microservice
+  version: 2017-11-30-alpha
+servers:
+  - url: http://micro.cs.uregina.ca:3000/
+    description: Dev Server
+  - url: http://micro.cs.uregina.ca:3001/
+    description: Optional Server, testing API doc spec
+paths:
+  /client/enrollments:
+    get:
+      tags: ['enrollments']
+      summary: "Get enrollments for a client. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['enrollments']
+      summary: "Client self-enrollment into eligibile program "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/graphs:
+    get:
+      tags: ['graphs']
+      summary: "Get data for plotting client-viewable graphs "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/package:
+    get:
+      tags: ['package']
+      summary: "Get particular enrollment info for client "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/stages:
+    get:
+      tags: ['stages']
+      summary: "Get particular enrolment info for client "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/stages/{id}:
+    get:
+      tags: ['stages']
+      summary: "Get specific stage and completion info in an enrollment for client "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/stages/{stage_id}/tasks/{task_id}/pages/*id:
+    get:
+      tags: ['*id']
+      summary: "Get page "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: task_id
+        description: task_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/stages/{stage_id}/tasks/{task_id}/pages/viewed/*id:
+    put:
+      tags: ['*id']
+      summary: "Mark page as Viewed "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: task_id
+        description: task_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/surveys:
+    get:
+      tags: ['surveys']
+      summary: "Get surveys due for a particular enrolment info for client "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/surveys/{id}:
+    get:
+      tags: ['surveys']
+      summary: "Get specific survey link result for client "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/surveys/{survey_id}/results/{result_id}/complete:
+    post:
+      tags: ['complete']
+      summary: "mark result as complete "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: survey_id
+        description: survey_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: result_id
+        description: result_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/surveys/{survey_id}/results/{result_id}/result_entries:
+    post:
+      tags: ['result_entries']
+      summary: "create new result entry "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: survey_id
+        description: survey_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: result_id
+        description: result_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{enrollment_id}/surveys/{survey_id}/results/{result_id}/result_entries/{id}:
+    put:
+      tags: ['result_entries']
+      summary: "update a result entry "
+      parameters:
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: survey_id
+        description: survey_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: result_id
+        description: result_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{id}:
+    get:
+      tags: ['enrollments']
+      summary: "Get particular enrollment info for client "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/enrollments/{id}/withdraw:
+    post:
+      tags: ['withdraw']
+      summary: "Client wishes to withdraw (cancel the enrollent). "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/matchings:
+    get:
+      tags: ['matchings']
+      summary: "Return all visible and active matching records. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /client/prescreen:
+    get:
+      tags: ['prescreen']
+      summary: "Get all available (published) programs eligible for self-registration."
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/avatar:
+    delete:
+      tags: ['avatar']
+      summary: "Remove Current Users Avatar "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['avatar']
+      summary: "Get Current Users Avatar "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['avatar']
+      summary: "Update/Create Current Users Avatar "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['avatar']
+      summary: "Update/Create Current Users Avatar "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/avatar/{id}:
+    get:
+      tags: ['avatar']
+      summary: "Get specific users avatar "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/broadcasts:
+    get:
+      tags: ['broadcasts']
+      summary: "Retrieve all applicable broadcasts for logged-in user "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/broadcasts/{id}:
+    delete:
+      tags: ['broadcasts']
+      summary: "Mark targeted broadcast as dismissed "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['broadcasts']
+      summary: "Mark targeted broadcast as viewed "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/draft:
+    post:
+      tags: ['draft']
+      summary: "Create draft message "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders:
+    get:
+      tags: ['folders']
+      summary: "List folders. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['folders']
+      summary: "Create a new folder. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders/{folder_id}/messages:
+    get:
+      tags: ['messages']
+      summary: "List all messages in a folder. "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders/{folder_id}/messages/{id}:
+    delete:
+      tags: ['messages']
+      summary: "Delete a message "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['messages']
+      summary: "Return particular message for client "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['messages']
+      summary: "Update (drafts only) message "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders/{folder_id}/messages/{id}/restore:
+    put:
+      tags: ['restore']
+      summary: "Restore a deleted message "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders/{folder_id}/messages/move_to/{target_id}:
+    put:
+      tags: ['move_to']
+      summary: "Move multiple messages "
+      parameters:
+      - in: path
+        name: folder_id
+        description: folder_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: target_id
+        description: target_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/folders/{id}:
+    delete:
+      tags: ['folders']
+      summary: "Delete a folder. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['folders']
+      summary: "Return a particular folder. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['folders']
+      summary: "Update an existing folder. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/matchings:
+    get:
+      tags: ['matchings']
+      summary: "List matchings "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/message:
+    post:
+      tags: ['message']
+      summary: "Send message "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/profile:
+    get:
+      tags: ['profile']
+      summary: "Profile info "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['profile']
+      summary: "Update own profile info "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/profile/{id}:
+    get:
+      tags: ['profile']
+      summary: "Return a particular user's info "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['profile']
+      summary: "Saves a particular user's info "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/profile/email:
+    put:
+      tags: ['email']
+      summary: "Update own email address (triggers email change confirmation) "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/recipients:
+    get:
+      tags: ['recipients']
+      summary: "List elegibile recipients for messages, broadcasts for logged-in user."
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/settings:
+    get:
+      tags: ['settings']
+      summary: "Get profile settings "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /common/settings/{var}:
+    put:
+      tags: ['settings']
+      summary: "Saves a particular setting for logged-in user "
+      parameters:
+      - in: path
+        name: var
+        description: var
+        required: true
+        schema:
+          type: string
+        example: abc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/additional_resources/{id}:
+    delete:
+      tags: ['additional_resources']
+      summary: "Delete an Additional Resource. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/data_points/{id}:
+    delete:
+      tags: ['data_points']
+      summary: "Delete a data-spoint. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['data_points']
+      summary: "Return a particular data-point. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['data_points']
+      summary: "Update an existing data-point. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/domain_question_links/{id}:
+    delete:
+      tags: ['domain_question_links']
+      summary: "Update a particular domain question link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['domain_question_links']
+      summary: "Return a particular domain question link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['domain_question_links']
+      summary: "Update a particular domain question link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/graphs/{graph_id}/data_points:
+    get:
+      tags: ['data_points']
+      summary: "List data-points for a Graph "
+      parameters:
+      - in: path
+        name: graph_id
+        description: graph_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['data_points']
+      summary: "Create a new datapoint (link b/w scoring domain and graph). "
+      parameters:
+      - in: path
+        name: graph_id
+        description: graph_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/graphs/{id}:
+    delete:
+      tags: ['graphs']
+      summary: "Delete a graph. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['graphs']
+      summary: "Return a particular Graph. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['graphs']
+      summary: "Update an existing Graph. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/media/{item_type}/{item_id}/images:
+    get:
+      tags: ['images']
+      summary: "List images on a page "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['images']
+      summary: "Upload an image to a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/media/{item_type}/{item_id}/images/{id}:
+    delete:
+      tags: ['images']
+      summary: "Delete an image on a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['images']
+      summary: "Get image info on a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['images']
+      summary: "Update an image on a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/media/{item_type}/{item_id}/resources:
+    get:
+      tags: ['resources']
+      summary: "List resources on a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['resources']
+      summary: "Upload a resource to a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/media/{item_type}/{item_id}/resources/{id}:
+    delete:
+      tags: ['resources']
+      summary: "Delete a resource on a page. "
+      parameters:
+      - in: path
+        name: item_type
+        description: item_type
+        required: true
+        schema:
+          type: string
+        example: abc
+      - in: path
+        name: item_id
+        description: item_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/notifications/{id}:
+    delete:
+      tags: ['notifications']
+      summary: "Update a particular Notification. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['notifications']
+      summary: "Return a particular Notification. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['notifications']
+      summary: "Update a particular Notification. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages:
+    get:
+      tags: ['pages']
+      summary: "Return list of all base pages "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['pages']
+      summary: "Create a page "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages/*page_id:
+    delete:
+      tags: ['*page_id']
+      summary: "Delete a Page. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['*page_id']
+      summary: "Return a particular Page. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['*page_id']
+      summary: "Update an existing Page. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages/{id}/archive:
+    put:
+      tags: ['archive']
+      summary: "Archive Page "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages/{id}/publish:
+    put:
+      tags: ['publish']
+      summary: "Publish Page "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages/{id}/sunset:
+    put:
+      tags: ['sunset']
+      summary: "Sunset Page "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/pages/{id}/unpublish:
+    put:
+      tags: ['unpublish']
+      summary: "Unpublish Page "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/program_groups:
+    get:
+      tags: ['program_groups']
+      summary: "List ProgramGroups. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['program_groups']
+      summary: "Create a new ProgramGroup. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/program_groups/{group_id}/programs:
+    get:
+      tags: ['programs']
+      summary: "List Programs. "
+      parameters:
+      - in: path
+        name: group_id
+        description: group_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['programs']
+      summary: "Create a new Program. "
+      parameters:
+      - in: path
+        name: group_id
+        description: group_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/program_groups/{id}:
+    delete:
+      tags: ['program_groups']
+      summary: "Delete a ProgramGroup. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['program_groups']
+      summary: "Return a particular ProgramGroup. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['program_groups']
+      summary: "Update an existing ProgramGroup. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}:
+    delete:
+      tags: ['programs']
+      summary: "Delete a Program. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['programs']
+      summary: "Return a particular Program. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['programs']
+      summary: "Update an existing Program. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}/archive:
+    put:
+      tags: ['archive']
+      summary: "Archive Program "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}/clone:
+    put:
+      tags: ['clone']
+      summary: "Clone Program "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}/publish:
+    put:
+      tags: ['publish']
+      summary: "Publish Program "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}/sunset:
+    put:
+      tags: ['sunset']
+      summary: "Sunset Program "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{id}/unpublish:
+    put:
+      tags: ['unpublish']
+      summary: "Unpublish Program "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{program_id}/additional_resources:
+    get:
+      tags: ['additional_resources']
+      summary: "List Additional Resources for Program "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['additional_resources']
+      summary: "Create a new Additional Resource. "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{program_id}/graphs:
+    get:
+      tags: ['graphs']
+      summary: "List Graphs for Program "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['graphs']
+      summary: "Create a new Graph. "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{program_id}/scoring_domains:
+    get:
+      tags: ['scoring_domains']
+      summary: "Return list of all scoring domains for a particular program "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{program_id}/stages:
+    get:
+      tags: ['stages']
+      summary: "List Stages for Program "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['stages']
+      summary: "Create a new Stage. "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/programs/{program_id}/survey_links:
+    get:
+      tags: ['survey_links']
+      summary: "List Survey Link. "
+      parameters:
+      - in: path
+        name: program_id
+        description: program_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/questions/{id}:
+    get:
+      tags: ['questions']
+      summary: "Return a particular question. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/scoring_domains/{id}:
+    delete:
+      tags: ['scoring_domains']
+      summary: "Update a particular scoring domain. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['scoring_domains']
+      summary: "Return a particular scoring domain. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['scoring_domains']
+      summary: "Update a particular scoring domain. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/scoring_domains/{scoring_domain_id}/domain_question_links:
+    get:
+      tags: ['domain_question_links']
+      summary: "Return list of all domain question links "
+      parameters:
+      - in: path
+        name: scoring_domain_id
+        description: scoring_domain_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['domain_question_links']
+      summary: "Create a domain question links "
+      parameters:
+      - in: path
+        name: scoring_domain_id
+        description: scoring_domain_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/stages/{id}:
+    delete:
+      tags: ['stages']
+      summary: "Delete a Stage. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['stages']
+      summary: "Return a particular Stage. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['stages']
+      summary: "Update an existing Stage. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/stages/{stage_id}/notifications:
+    get:
+      tags: ['notifications']
+      summary: "Return list of all notifications "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['notifications']
+      summary: "Create a notification "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/stages/{stage_id}/scoring_domains:
+    get:
+      tags: ['scoring_domains']
+      summary: "Return list of all scoring domains "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['scoring_domains']
+      summary: "Create a scoring domain "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/stages/{stage_id}/survey_links:
+    get:
+      tags: ['survey_links']
+      summary: "List Survey Link. "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['survey_links']
+      summary: "Create a new Survey Link. "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/stages/{stage_id}/tasks:
+    get:
+      tags: ['tasks']
+      summary: "List Tasks. "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['tasks']
+      summary: "Create a new Task. "
+      parameters:
+      - in: path
+        name: stage_id
+        description: stage_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/survey_links/{id}:
+    delete:
+      tags: ['survey_links']
+      summary: "Delete a Survey Link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['survey_links']
+      summary: "Return a particular Survey Link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['survey_links']
+      summary: "Update an existing Survey Link. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys:
+    get:
+      tags: ['surveys']
+      summary: "Return list of all surveys "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['surveys']
+      summary: "Create a survey "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{id}:
+    delete:
+      tags: ['surveys']
+      summary: "Delete a particular survey. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['surveys']
+      summary: "Return a particular survey. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['surveys']
+      summary: "Update a particular survey. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{id}/archive:
+    put:
+      tags: ['archive']
+      summary: "Archive Survey "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{id}/attachPage:
+    put:
+      tags: ['attachPage']
+      summary: "Attach Page to Survey "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{id}/publish:
+    put:
+      tags: ['publish']
+      summary: "Publish Survey "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{id}/sunset:
+    put:
+      tags: ['sunset']
+      summary: "Sunset Survey "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/surveys/{survey_id}/questions:
+    get:
+      tags: ['questions']
+      summary: "List Questions for Survey "
+      parameters:
+      - in: path
+        name: survey_id
+        description: survey_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /content/tasks/{id}:
+    delete:
+      tags: ['tasks']
+      summary: "Delete a Task. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['tasks']
+      summary: "Return a particular Task. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['tasks']
+      summary: "Update an existing Task. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /refresh:
+    get:
+      tags: ['']
+      summary: "blah "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/abilities:
+    get:
+      tags: ['abilities']
+      summary: "List abilities. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['abilities']
+      summary: "Create a new ability. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/abilities/{id}:
+    delete:
+      tags: ['abilities']
+      summary: "Delete an ability record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['abilities']
+      summary: "Return a particular ability info. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['abilities']
+      summary: "Update an existing ability record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/broadcasts:
+    get:
+      tags: ['broadcasts']
+      summary: "List broadcasts. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['broadcasts']
+      summary: "Create a new broadcasts. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/broadcasts/{id}:
+    delete:
+      tags: ['broadcasts']
+      summary: "Expire/delete a broadcast. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['broadcasts']
+      summary: "Return a particular broadcast. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['broadcasts']
+      summary: "Update an existing broadcast. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/client_clusters:
+    get:
+      tags: ['client_clusters']
+      summary: "List client clusters. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['client_clusters']
+      summary: "Create a new client-cluster. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/client_clusters/{cluster_id}/clients/{client_id}:
+    delete:
+      tags: ['clients']
+      summary: "Remove client from client-cluster. "
+      parameters:
+      - in: path
+        name: cluster_id
+        description: cluster_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['clients']
+      summary: "Add client to client-cluster. "
+      parameters:
+      - in: path
+        name: cluster_id
+        description: cluster_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/client_clusters/{id}:
+    delete:
+      tags: ['client_clusters']
+      summary: "Delete a client-cluster. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['client_clusters']
+      summary: "Return a particular client-cluster. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['client_clusters']
+      summary: "Update an existing client-cluster. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients:
+    get:
+      tags: ['clients']
+      summary: "List clients. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['clients']
+      summary: "Create a client account. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}:
+    delete:
+      tags: ['clients']
+      summary: "Terminate client account. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['clients']
+      summary: "Return a particular client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['clients']
+      summary: "Update an existing client record. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/activities:
+    get:
+      tags: ['activities']
+      summary: "Get all activities for a client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/activities/{id}:
+    get:
+      tags: ['activities']
+      summary: "Get particular activity entry for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/clusters:
+    post:
+      tags: ['clusters']
+      summary: "Assign client to multiple client-clusters "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/comment:
+    get:
+      tags: ['comment']
+      summary: "Return client account comment "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['comment']
+      summary: "Update an account comment for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments:
+    get:
+      tags: ['enrollments']
+      summary: "Get all enrollments for a client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['enrollments']
+      summary: "Create enrollment for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/graphs:
+    get:
+      tags: ['graphs']
+      summary: "Get data for plotting graphs "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/page_views:
+    get:
+      tags: ['page_views']
+      summary: "Get all pages viewed for particular client enrollment. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/page_views/{id}:
+    get:
+      tags: ['page_views']
+      summary: "Get views for page in context of client enrollment "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['page_views']
+      summary: "Update page-view count (for particular client enrollment) "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/scores:
+    get:
+      tags: ['scores']
+      summary: "List psychometric scores for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/scores/{scoring_domain_id}:
+    get:
+      tags: ['scores']
+      summary: "Return a psychometric score for a given scoring domain for a client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: scoring_domain_id
+        description: scoring_domain_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/stages:
+    get:
+      tags: ['stages']
+      summary: "Get particular enrolment info for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/survey_results/{survey_link_id}:
+    get:
+      tags: ['survey_results']
+      summary: "Get survey results "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: survey_link_id
+        description: survey_link_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/surveys:
+    get:
+      tags: ['surveys']
+      summary: ""
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{enrollment_id}/unlock_lock/{id}:
+    post:
+      tags: ['unlock_lock']
+      summary: "Create Completion Record for Lock "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: enrollment_id
+        description: enrollment_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{id}:
+    get:
+      tags: ['enrollments']
+      summary: "Get particular enrollment for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['enrollments']
+      summary: "Create enrollment for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{id}/complete:
+    post:
+      tags: ['complete']
+      summary: "Transition enrollment to COMPLETED phase. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{id}/disqualify:
+    post:
+      tags: ['disqualify']
+      summary: "Transition enrollment to DISQUALIFIED phase. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{id}/followup:
+    post:
+      tags: ['followup']
+      summary: "Transition enrollment to FOLLOWUP phase. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/enrollments/{id}/withdraw:
+    post:
+      tags: ['withdraw']
+      summary: "Transition enrollment to WITHDREW phase. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/matchings:
+    get:
+      tags: ['matchings']
+      summary: "Return all matching records for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['matchings']
+      summary: "Create a new staff-client matching for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/matchings/{id}:
+    delete:
+      tags: ['matchings']
+      summary: "Expire an existing staff-client matching for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['matchings']
+      summary: "View a particular staff-client matching for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['matchings']
+      summary: "Update an existing staff-client matching for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/messages:
+    get:
+      tags: ['messages']
+      summary: "Get all messages for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/messages/id:
+    delete:
+      tags: ['id']
+      summary: "Wipe a client's message "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/messaging_statistics:
+    get:
+      tags: ['messaging_statistics']
+      summary: "List clients. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/notes:
+    get:
+      tags: ['notes']
+      summary: "Return all notes for a client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['notes']
+      summary: "Create a new note for a client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/notes/{id}:
+    get:
+      tags: ['notes']
+      summary: "Return particular note for client "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['notes']
+      summary: "Update an existing note for client. "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/clients/{client_id}/settings:
+    get:
+      tags: ['settings']
+      summary: "Get a client's settings "
+      parameters:
+      - in: path
+        name: client_id
+        description: client_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/dashboard:
+    get:
+      tags: ['dashboard']
+      summary: "Staff dashboard "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/endpoints:
+    get:
+      tags: ['endpoints']
+      summary: "List endpoints. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['endpoints']
+      summary: "Create a new endpoint entry. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/endpoints/{id}:
+    delete:
+      tags: ['endpoints']
+      summary: "Delete an endpoint record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['endpoints']
+      summary: "Return a particular endpoint. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['endpoints']
+      summary: "Update an existing endpoint record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/library:
+    get:
+      tags: ['library']
+      summary: "List Libraries. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['library']
+      summary: "Create a new Library. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/library/{id}:
+    delete:
+      tags: ['library']
+      summary: "Delete a library record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['library']
+      summary: "Return a particular Library info. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['library']
+      summary: "Update an existing library record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/library/{library_id}/files:
+    get:
+      tags: ['files']
+      summary: "List library files. "
+      parameters:
+      - in: path
+        name: library_id
+        description: library_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['files']
+      summary: "Create a library file. "
+      parameters:
+      - in: path
+        name: library_id
+        description: library_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/library/{library_id}/files/{id}:
+    delete:
+      tags: ['files']
+      summary: "Deletes a library file. "
+      parameters:
+      - in: path
+        name: library_id
+        description: library_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/matchable/supervisors:
+    get:
+      tags: ['supervisors']
+      summary: "List of supervisors that can be assigned to therapists. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/matchable/therapists:
+    get:
+      tags: ['therapists']
+      summary: "List of therapists that can be assigned to clients. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members:
+    get:
+      tags: ['members']
+      summary: "List staff accounts. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['members']
+      summary: "Create a new staff account. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{id}:
+    delete:
+      tags: ['members']
+      summary: "Terminate staff account. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['members']
+      summary: "Return a particular staff account. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['members']
+      summary: "Update an existing staff account. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/caseload:
+    get:
+      tags: ['caseload']
+      summary: "Show staff member's caseload "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/client_matchings:
+    get:
+      tags: ['client_matchings']
+      summary: "Return all client matchings records for therapist. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/comment:
+    get:
+      tags: ['comment']
+      summary: "Return staff account comment "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['comment']
+      summary: "Update an staff account comment. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/matchings:
+    get:
+      tags: ['matchings']
+      summary: "Return all supervisory matchings records for therapist. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['matchings']
+      summary: "Create a new staff-staff matching for therapist. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/matchings/{id}:
+    delete:
+      tags: ['matchings']
+      summary: "Expire an existing staff-staff matching for staff. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['matchings']
+      summary: "View a particular staff-staff matching for staff "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['matchings']
+      summary: "Update an existing staff-staff matching for staff. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/messaging_statistics:
+    get:
+      tags: ['messaging_statistics']
+      summary: "List staff stats. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/settings:
+    get:
+      tags: ['settings']
+      summary: "Get a staff member's settings "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/members/{staff_id}/staff_matchings:
+    get:
+      tags: ['staff_matchings']
+      summary: "Return all staff matchings records overseen by this staff member. "
+      parameters:
+      - in: path
+        name: staff_id
+        description: staff_id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/my_clients:
+    get:
+      tags: ['my_clients']
+      summary: "List directly assigned (my) clients. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/my_therapists:
+    get:
+      tags: ['my_therapists']
+      summary: "List therapists under my supervision "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['my_therapists']
+      summary: "Create therapist account "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/note_types:
+    get:
+      tags: ['note_types']
+      summary: "List note types. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['note_types']
+      summary: "Create a new note type. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/note_types/{id}:
+    delete:
+      tags: ['note_types']
+      summary: "Delete a status. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['note_types']
+      summary: "Return a particular note type. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['note_types']
+      summary: "Update an existing note type. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/roles:
+    get:
+      tags: ['roles']
+      summary: "List roles. "
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    post:
+      tags: ['roles']
+      summary: "Create a new role. "
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+  /staff/roles/{id}:
+    delete:
+      tags: ['roles']
+      summary: "Delete a role record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    get:
+      tags: ['roles']
+      summary: "Return a particular role info. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
+    put:
+      tags: ['roles']
+      summary: "Update an existing role record. "
+      parameters:
+      - in: path
+        name: id
+        description: id
+        required: true
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/place_holder'
+      responses:
+        '200':
+          description: 'OK'
+        '404':
+          description: 'Not Found'
+        '204':
+          description: 'OK - no content'
+        '400':
+          description: 'Forbidden'
