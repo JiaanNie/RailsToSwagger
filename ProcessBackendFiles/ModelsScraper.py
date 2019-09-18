@@ -5,10 +5,9 @@
 # }
 import GenerateModels
 def Scrape(files_structure):
-    models = {}
+    models = []
     for path in files_structure:
         for file in files_structure[path]:
             file_path  = path + "\\" + file
-            GenerateModels.Generate(file, file_path)
-
-    return None
+            temp = GenerateModels.Generate(file, file_path)
+    return models

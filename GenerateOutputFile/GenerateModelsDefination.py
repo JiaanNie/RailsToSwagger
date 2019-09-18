@@ -1,22 +1,21 @@
-def Generate(output_file, models):
+def Generate(output_file, swagger_elements):
     output_file.write("components:\n")
     output_file.write("  schemas:\n")
-    type= ""
-    __RemoveDuplicatesFromList(models)
-
-    for model_name in models:
-        result = __ConvertListToCompleteString__(models[model_name])
-        print(model_name)
-        output_file.write("    " + model_name + ":\n")
-        output_file.write("      type: 'object'\n")
-        output_file.write("      required: " + result + "\n")
-        output_file.write("      properties:\n")
-        for param in models[model_name]:
-            output_file.write("        " + param + ":\n" )
-            if "id" in param:
-                type = "integer"
-            else:
-                type ="string"
-            output_file.write("          type: '" + type + "'\n")
-            if "_at" in param:
-                output_file.write("          format: 'date-time'\n")
+    for element in swagger_elements:
+        if element["body_request"] != {}:
+            output_file.write("    " + element["model_definition"]+ ":\n")
+            output_file.write("      type: 'object'\n")
+            output_file.write("      required:  ['id', 'id1', 'id2', 'data1', 'data2', 'data3']\n")
+            output_file.write("      properties:\n")
+            output_file.write("        id:\n")
+            output_file.write("          type: 'integer'\n")
+            output_file.write("        id1:\n")
+            output_file.write("          type: 'integer'\n")
+            output_file.write("        id2:\n")
+            output_file.write("          type: 'integer'\n")
+            output_file.write("        data1:\n")
+            output_file.write("          type: 'string'\n")
+            output_file.write("        data2:\n")
+            output_file.write("          type: 'string'\n")
+            output_file.write("        data3:\n")
+            output_file.write("          type: 'string'\n")

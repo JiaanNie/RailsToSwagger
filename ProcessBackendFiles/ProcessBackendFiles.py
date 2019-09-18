@@ -5,7 +5,4 @@ base_path = "C:\\Users\\nie209\\Desktop\\Projects\\API_Doc_Generator\\BackendSer
 def Process():
     files_structure = FilesSearcher.Search(base_path)
     models = ModelsScraper.Scrape(files_structure)
-    
-
-
-Process()
+    return models

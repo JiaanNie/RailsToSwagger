@@ -3,6 +3,7 @@ import AddInPathElement
 import AddInPathParamsElement
 import AddBodyRequestParamsElement
 import AddDefaultResponsesElement
+import AddModelDefinition
 def Generate(routes_dict):
     for each_route_dict in routes_dict:
         AddTagElement.Add(each_route_dict)
@@ -10,4 +11,5 @@ def Generate(routes_dict):
         AddInPathElement.Add(each_route_dict)
         AddInPathParamsElement.Add(each_route_dict)
         AddBodyRequestParamsElement.Add(each_route_dict)
+        AddModelDefinition.Add(each_route_dict)
     return routes_dict
